@@ -1,148 +1,77 @@
-# 🎨 AI Image Prompt Optimizer
+# Image Prompt Optimizer 🎨
 
-A Claude Code skill for generating and optimizing AI image generation prompts with **primary support for Google Gemini (Nano Banana)**, plus Midjourney, Stable Diffusion, DALL-E, Leonardo.ai, and other text-to-image tools.
+> AI 图像提示词优化器 - 完全自包含
 
-## ✨ Features
+为主流 AI 图像生成工具生成专业优化的提示词，主打 Kolors (快手可灵) 和 Qwen-img (阿里千问)，同时支持 Midjourney、Stable Diffusion、DALL-E 等。
 
-- **Google Gemini Optimized**: Primary focus on conversational, natural language prompts for Google Gemini (Nano Banana)
-- **Multi-Platform Support**: Secondary support for Midjourney, Stable Diffusion, DALL-E, Leonardo.ai
-- **Bilingual Output**: English and Chinese prompt variations
-- **Educational**: Explains prompt components and optimization strategies
-- **Comprehensive Templates**: Pre-built templates for portraits, landscapes, products, and more
-- **Reference Library**: Extensive keyword and platform-specific reference materials
+## ✨ 特性
 
-## 📦 Installation
+- 🎯 **智能优化** - 自动生成专业级提示词
+- 🌏 **双语支持** - 中英文双语输出
+- 📱 **多平台支持** - Kolors / Qwen / Midjourney / SD
+- 📚 **内置参考** - 关键词库、模板库已内置，无需外部文件
+- 💡 **详细分解** - 提示词各部分详细解释
 
-### Using npx (Recommended)
+## 🚀 快速开始
+
+### OpenClaw 用户
+
+将 skill 添加到 workspace：
 
 ```bash
-npx skills add manzxiao/text-to-image-prompt-optimizer
+cp -r image-prompt-optimizer ~/.openclaw/workspace/skills/
 ```
 
-### Manual Installation
+重启 OpenClaw 后即可使用。
 
-1. Clone this repository to your Claude Code skills directory:
-```bash
-cd ~/.claude/skills
-git clone https://github.com/manzxiao/text-to-image-prompt-optimizer.git
-```
+### 手动使用
 
-2. Restart Claude Code or reload skills
+直接参考 SKILL.md 中的指南生成提示词。
 
-## 🚀 Usage
+## 📖 使用方法
 
-The skill activates automatically when you:
+当需要生成或优化提示词时，直接告诉宇华，例如：
 
-1. Request prompt generation: "Generate a prompt for..."
-2. Optimize existing prompts: "Optimize this prompt: ..."
-3. Ask for variations: "Create variations of this image idea"
-4. Mention keywords: Gemini, Nano Banana, Midjourney, AI绘图, text-to-image
-5. Use command patterns: "/imagine", "提示词"
+- "帮我生成一个古风少女的提示词"
+- "优化这个提示词：..."
+- "创建一个赛博朋克城市的提示词"
 
-### Example Requests
+## 📦 项目结构
 
 ```
-Generate a prompt for a sunset over mountains
-
-优化这个提示词: a cat sitting on a table
-
-Create variations for a cyberpunk street scene
-
-帮我生成一个适合 Nano Banana 的人物肖像提示词
+image-prompt-optimizer/
+├── SKILL.md           # 主技能文件（完全自包含）
+├── README.md          # 本文件
+├── VISION.md          # 项目愿景
+├── CONTRIBUTING.md    # 贡献指南
+├── SECURITY.md        # 安全说明
+└── LICENSE            # MIT 许可证
 ```
 
-## 📚 What You Get
+## 🔧 平台支持
 
-Each prompt generation includes:
+| 平台 | 状态 | 说明 |
+|------|------|------|
+| Kolors | ⭐ 主推 | 快手可灵，中文优化 |
+| Qwen-img | 🌟 备选 | 阿里千问，高分辨率 |
+| Midjourney | 📸 支持 | --ar, --s 参数 |
+| Stable Diffusion | 🎨 支持 | 采样器、CFG 建议 |
 
-- ⭐ **Google Gemini version** (Primary, conversational style)
-- 🎯 **Alternative platform versions** (Midjourney, SD, etc.)
-- 📝 **Prompt breakdown** explaining each component
-- ⚙️ **Platform-specific guidance** and parameters
-- 💡 **Optimization tips** for refinement
-- 🎯 **Next steps** for implementation
+## 📚 内置资源
 
-## 🎓 Reference Materials
+- ✅ 质量关键词库
+- ✅ 光线关键词库
+- ✅ 构图关键词库
+- ✅ 风格关键词库
+- ✅ 提示词模板库
+- ✅ 平台特定指南
 
-The skill includes comprehensive reference documentation:
+所有参考资料已内置于 SKILL.md，无需外部文件。
 
-- **prompt-library.md** - Template library organized by category (portraits, landscapes, products, etc.)
-- **keywords-reference.md** - Quick keyword lookup by type
-- **platform-specific.md** - Platform-specific parameters and advanced techniques
+## 🤝 贡献
 
-## 🌟 Platform Priority
+欢迎提交 Issue 和 PR！
 
-**Primary (Default):**
-- Google Gemini (Nano Banana) - Conversational, natural language prompts
+## 📜 许可证
 
-**Secondary (On Request):**
-- Midjourney
-- Stable Diffusion
-- DALL-E
-- Leonardo.ai
-
-## 📖 Example Output
-
-When you ask for a prompt, you'll receive:
-
-```
-## 🎨 Generated Prompts
-
-### ⭐ Variation 1: Google Gemini (Nano Banana) - RECOMMENDED
-English (Conversational):
-Create a professional portrait of a young woman in her late 20s with warm,
-natural lighting. She should have confident, friendly expression...
-
-中文版本:
-生成一张专业人像照片，主角是一位20多岁的年轻女性，采用温暖自然的光线...
-
-适用平台: Google Gemini (Nano Banana / Nano Banana Pro)
-推荐模型: Nano Banana for testing / Nano Banana Pro for professional output
-
----
-
-### Variation 2: Midjourney Style
-professional portrait, young woman, late 20s, warm lighting,
-confident expression, natural beauty...
-
-[Plus detailed breakdowns, tips, and next steps]
-```
-
-## 🛠️ Technical Details
-
-- **Skill Type**: Claude Code Agent Skill
-- **Format**: SKILL.md with YAML frontmatter
-- **Compatibility**: Claude Code CLI, skills.sh
-- **Language**: English & Chinese
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-
-- Report issues
-- Suggest improvements
-- Add new templates or keywords
-- Expand platform support
-
-## 📄 License
-
-MIT License - Feel free to use and modify for your projects.
-
-## 🔗 Links
-
-- [Skills.sh Directory](https://skills.sh/)
-- [Claude Code Documentation](https://code.claude.com/docs)
-- [Google Gemini](https://gemini.google.com/)
-
-## 📮 Author
-
-**manzxiao**
-
-If you find this skill useful, please ⭐ star the repository!
-
----
-
-**Installation:**
-```bash
-npx skills add manzxiao/text-to-image-prompt-optimizer
-```
+MIT License
