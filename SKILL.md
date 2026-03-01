@@ -30,7 +30,7 @@ description: >
    - **Kolors (快手可灵) - 主推**: 中文友好，自然语言描述，添加质量关键词
    - **Qwen-img (阿里千问) - 次推**: 高分辨率，适合专业场景，精细控制
    - Midjourney (次要): 添加 `--ar`, `--s`, `--q` 等参数
-   - Stable Diffusion (次要): 建议采样步数、CFG _scale 和负面提示词
+   - Stable Diffusion (次要): 建议采样步数、CFG scale 和负面提示词
    - 适配用户指定的平台，未指定时默认 Kolors
 
 4. **解释和教育**
@@ -43,16 +43,205 @@ description: >
    - 建议参数调整以优化
    - 根据结果提供迭代
 
-## 输出格式
+---
+
+# 📚 内置关键词参考
+
+## 质量关键词
+
+### 基础质量
+- high quality / high resolution
+- detailed / highly detailed
+- sharp focus / crisp
+- clear / clean
+
+### 高级质量
+- 4k / 8k / ultra hd
+- masterpiece
+- professional
+- photorealistic / hyperrealistic
+- award winning
+- trending on ArtStation
+- best quality
+- ultra detailed
+
+## 光线关键词
+
+### 自然光
+- natural lighting / sunlight
+- golden hour / blue hour
+- soft lighting / harsh lighting
+- backlit / rim lighting
+- diffused light
+- dappled sunlight
+- sunrise / sunset
+
+### 人造光
+- studio lighting
+- dramatic lighting
+- neon lights
+- candlelight / firelight
+- volumetric lighting (god rays)
+- spotlight
+- ambient lighting
+
+## 构图关键词
+
+### 相机角度
+- close-up / extreme close-up
+- medium shot / full shot
+- wide angle / panoramic
+- bird's eye view / aerial view
+- low angle / high angle
+- eye level
+
+### 景深
+- shallow depth of field
+- bokeh (blurred background)
+- deep focus
+- selective focus
+- macro / micro
+
+## 风格关键词
+
+### 艺术风格
+- impressionism / surrealism / minimalism
+- baroque / art nouveau / expressionism
+- cubism / pop art / abstract
+- cyberpunk / steampunk / solarpunk
+
+### 媒介风格
+- oil painting / watercolor / acrylic
+- pencil sketch / charcoal / ink drawing
+- digital art / 3D render / photography
+- anime / manga / comic book
+- pixel art / low poly / vector art
+
+## 情绪关键词
+
+### 正面情绪
+- peaceful / serene / calm
+- magical / whimsical / dreamy
+- romantic / uplifting
+
+### 戏剧性情绪
+- dramatic / intense / epic
+- mysterious / atmospheric / moody
+- eerie / haunting / noir
+
+---
+
+# 📋 提示词模板库
+
+## 基础公式
+
+```
+[主体] + [环境] + [风格] + [光线] + [构图] + [质量]
+```
+
+## 人像模板
+
+```
+[年龄][性别]，[外貌特征]，[服装]，[表情]，[背景]，
+[风格]，[光线]，portrait photography，[质量]
+
+示例：
+一位年轻亚洲女性，长发披肩，身穿休闲白衬衫，
+微笑自然，户外背景，日系风格，柔和光线，
+portrait photography，4k，清晰对焦
+```
+
+## 写实模板
+
+```
+[主体]，[场景]，shot on [相机型号]，[镜头]，[光线]，[后期]
+
+示例：
+山景，日落金山，shot on Canon EOS R5，
+24mm镜头，自然光，HDR，专业摄影
+```
+
+## 幻想角色模板
+
+```
+[种族/职业]角色，[特征]，[装备]，[姿势]，[环境]，
+fantasy art style，[氛围]，detailed，concept art
+
+示例：
+精灵战士，银甲，手持发光剑，站立姿势，
+古老森林，fantasy art style，神秘氛围，
+highly detailed，concept art，trending on ArtStation
+```
+
+---
+
+# ⚙️ 平台特定指南
+
+## Kolors (快手可灵) - 主推
+
+- **模型选择**: Kolors 基础版 / Kolors + LCM 加速
+- **中文优化**: 对中文支持优秀，直接用中文描述
+- **特色**: 色彩鲜艳，细节丰富，适合中文场景
+- **质量关键词**: `杰作, 高细节, 8k, 最佳质量, highly detailed`
+
+**示例提示词**:
+```
+一位穿汉服的年轻女子，站在古典园林中，繁花似锦，
+金色阳光透过树叶洒落，浅景深，古典油画风格，
+8k，超高清，杰作，细节丰富
+```
+
+## Qwen-img (阿里千问) - 备选
+
+- **模型选择**: qwen-t2a / qwen-img-1
+- **高分辨率**: 适合 1024x1024 以上
+- **特色**: 阿里千问，语义理解强，适合复杂场景
+- **质量关键词**: `high resolution, photorealistic, detailed`
+
+## Midjourney
+
+- **参数**: `--ar 16:9` (宽高比), `--s 100` (风格化), `--q 2` (质量)
+- **质量关键词**: `--q 2 --v 6`
+
+## Stable Diffusion
+
+- **采样步数**: 20-30
+- **CFG Scale**: 7-12
+- **负面提示词**: `lowres, bad anatomy, bad hands, text, error`
+
+---
+
+# 💡 优化技巧
+
+## Kolors 技巧
+
+- 使用中文描述效果更好
+- 添加质量词: `杰作, 高细节, 8k, 最佳质量`
+- 描述性语句而非关键词堆砌
+
+## Midjourney 技巧
+
+- 使用逗号分隔关键词
+- 添加 `--ar` 控制比例
+- 使用 `--iw` 控制原图参考程度
+
+## Stable Diffusion 技巧
+
+- 负面提示词很重要
+- 采样器推荐: DPM++ 2M Karras
+- 控制网(CN)可精确控制
+
+---
+
+# 📝 输出格式
 
 按以下结构回复（优先 Kolors 格式）：
 
-```
 ## 🎨 生成的提示词
 
 ### ⭐ 主推：Kolors (快手可灵)
 **中文提示词:**
-[清晰描述性语句，包含主体、环境、风格、光线、构图、质量关键词]
+[清晰描述性语句，包含主体、环境、风格，光线、构图、质量关键词]
 
 **英文翻译:**
 [English translation]
@@ -104,7 +293,7 @@ description: >
 - 模型选择: [Kolors 基础版 / Kolors + LCM]
 - 中文优化: 对中文支持优秀，直接用中文描述
 - 特色: 色彩鲜艳，细节丰富，适合中文场景
-- 质量关键词: `highly detailed, 8k, masterpiece, best quality`
+- 质量关键词: `杰作, 高细节, 8k, 最佳质量`
 
 **🌟 Qwen-img (备选):**
 - 模型选择: [qwen-t2a / qwen-img-1]
@@ -112,126 +301,5 @@ description: >
 - 特色: 阿里千问，语义理解强，适合复杂场景
 - 质量关键词: `high resolution, photorealistic, detailed`
 
-**其他平台 (补充):**
-[Midjourney/SD 等简要参数说明]
-
-## 💡 优化技巧
-
-### Kolors 技巧
-- 使用中文描述效果更好
-- 添加质量词: `杰作, 高细节, 8k, 最佳质量`
-- 风格词: `电影质感, 油画风格, 赛博朋克`
-- 光线词: `电影级光照, 戏剧性阴影, 黄金时刻`
-
-### Qwen-img 技巧
-- 精细的语义描述
-- 分辨率参数: `--ar 16:9` 等
-- 质量词: `photorealistic, hyperrealistic`
-
-## 快速模板
-
-### 🌟 Kolors 模板 - 主推
-
-#### 基础公式
-```
-[主体描述]，[环境细节]，[风格描述]，[光线描述]，[构图描述]，[质量描述]
-```
-
-#### 人像 (Kolors)
-```
-一位[年龄][性别]的肖像，[面部细节]，
-穿着[服装]，表情[表情/情绪]。
-使用[镜头/角度]，[光线描述]拍摄。
-背景[背景细节]。风格：[艺术风格]，
-[质量关键词]
-```
-
-#### 风景 (Kolors)
-```
-[地点/场景]的风景，[季节/时间]，[天气状况]。
-画面包含[主要元素]，[氛围描述]。
-使用[角度/视角]拍摄，[光线描述]。
-风格：[艺术风格]，[质量关键词]
-```
-
-#### 产品 (Kolors)
-```
-[产品名称]的产品照片，[材质描述]，
-放置在[背景/表面]上。使用[光线设置]从[方向]照射。
-[相机/镜头细节]拍摄。风格：[风格]，
-适合[用途]，[质量关键词]
-```
-
-#### 角色设计 (Kolors)
-```
-[角色描述]的角色设计，[外形特征]。
-穿着[服装/装备]，表情[姿势/情绪]。
-场景设定为[环境]。风格：[艺术风格]，
-[细节等级]，[质量关键词]
-```
-
 ---
 
-### 其他平台模板 (补充)
-
-#### Midjourney 关键词公式
-```
-[主体]，[环境]，[风格]，[光线]，[构图]，[质量]
-```
-
-#### Stable Diffusion
-```
-正向: [主体]，[环境]，[风格]，[光线]，[构图]，[质量]
-负向: ugly, blurry, low quality, distorted, bad anatomy
-```
-
-## 常见关键词
-
-**质量:**
-- 杰作, 高细节, 8k, 超高清, 最佳质量
-- highly detailed, masterpiece, professional
-- photorealistic, hyperrealistic
-
-**光线:**
-- 自然光, 黄金时刻, 柔和光照
-- 戏剧性光照, 体积光, 电影级光照
-- 边缘光, 眼神光
-
-**构图:**
-- 特写, 广角, 鸟瞰, 仰视, 俯视
-- 浅景深, 虚化, 三分法, 居中
-
-**风格:**
-- 电影质感, 艺术感, 极简主义
-- 赛博朋克, 奇幻, 动漫风格
-- 照片级, 油画, 水彩
-
-**情绪/氛围:**
-- 平静, 戏剧性, 神秘
-- 温馨, 史诗级, 空灵
-- 生动, 忧郁, 浪漫
-
-## 处理用户请求
-
-### "生成一个[简单想法]的提示词"
-扩展想法，提供 2-3 种变体，解释选择。
-
-### "优化这个提示词: [现有提示词]"
-分析现有提示词，识别弱点，提供改进版本并解释。
-
-### "我要[特定风格]"
-使用特定风格关键词和艺术家参考，提供示例。
-
-### "让它更好/更详细"
-添加质量关键词，精炼构图，增强具体性。
-
-### "创建变体"
-生成 3-4 种不同风格、情绪或构图的变体。
-
-## 有效提示词的技巧
-
-1. **具体** - "一只金毛犬" 比 "一只狗" 更好
-2. **使用艺术家/风格参考** - "宫崎骏风格" 或 "赛博朋克风格"
-3. **质量关键词重要** - 始终包含质量描述符
-4. **顺序重要** - 前面的关键词影响更大
-5. **测试和迭代** - 鼓励用户分享结果以优化
